@@ -1,0 +1,27 @@
+{
+  "name": "qing-gallery",
+  "version": "0.0.1",
+  "description": "A simple gallery component.",
+  "homepage": "http://mycolorway.github.io/qing-gallery",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mycolorway/qing-gallery.git"
+  },
+  "author": "farthinker <farthinker@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mycolorway/qing-gallery/issues"
+  },
+  "main": "dist/qing-gallery.js",
+  "scripts": {
+    "start": "gulp",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "qing-module": "~1.0.0"
+  },
+  "devDependencies": {
+    "qing-build": "^0.x"
+  }
+}
