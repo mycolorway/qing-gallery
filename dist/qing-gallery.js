@@ -24,14 +24,8 @@ var ImageItem,
 ImageItem = (function(superClass) {
   extend(ImageItem, superClass);
 
-  ImageItem.opts = {
-    el: null
-  };
-
   function ImageItem(opts) {
-    ImageItem.__super__.constructor.apply(this, arguments);
-    this.opts = $.extend({}, ImageItem.opts, opts);
-    this.el = $(this.opts.el);
+    this.el = $(opts.el);
     this.thumb = {
       src: this.el.attr('src'),
       size: {
@@ -43,14 +37,14 @@ ImageItem = (function(superClass) {
       src: this.el.data('origin-src'),
       size: this._getOriginSize(),
       download: this.el.data('download-src'),
-      name: this.el.data('image-name') || this.el.data('origin-name') || this.el.attr('alt') || ''
+      name: this.el.data('origin-name') || this.el.attr('alt') || ''
     };
     this.el.data('imageItem', this);
   }
 
   ImageItem.prototype._getOriginSize = function() {
     var size;
-    size = this.el.data('image-size') || this.el.data('origin-size');
+    size = this.el.data('origin-size');
     size = size ? size.split(',') : [0, 0];
     return {
       width: size[0] * 1 || this.thumb.size.width * 10,
@@ -398,8 +392,6 @@ Preview = (function(superClass) {
   Preview._tpl = "<div class=\"qing-gallery-preview\">\n  <div class=\"qing-gallery-stage loading\">\n    <div class=\"frame\">\n      <img src=\"\" />\n      <div class=\"loading-indicator\"></div>\n    </div>\n  </div>\n  <div class=\"qing-gallery-controls\">\n    <span class=\"filename\"></span>\n    <div class=\"controls\"></div>\n  </div>\n</div>";
 
   function Preview(opts) {
-    Preview.__super__.constructor.apply(this, arguments);
-    this.opts = $.extend({}, Preview.opts, opts);
     this.el = $(Preview._tpl);
     this._render();
     this._bind();
@@ -428,13 +420,13 @@ Preview = (function(superClass) {
   };
 
   Preview.prototype.load = function(imageItem) {
-    this.frame.addClass('animate').css($.extend({
+    this.frame.addClass('animate').css({
       left: 0,
       top: 0
-    }, utils.fitSize({
+    }).css(utils.fitSize({
       width: this.stage.width(),
       height: this.stage.height()
-    }, imageItem.origin.size)));
+    }, imageItem.origin.size));
     this.img.attr('src', imageItem.thumb.src);
     this.stage.addClass('modal');
     this.el.find('.filename').text(imageItem.origin.name);

@@ -19,8 +19,6 @@ class Rotate extends Control
   rotateTo: (degree) ->
     @degree = degree
 
-    # @_saveDegree()  if @opts.save
-
     @qingGallery.preview.frame
       .css @_rotateFitSize()
       .css transform: "rotate(#{ @degree }deg)"

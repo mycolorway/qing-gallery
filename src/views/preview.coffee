@@ -18,9 +18,6 @@ class Preview extends QingModule
   """
 
   constructor: (opts) ->
-    super
-
-    @opts = $.extend {}, Preview.opts, opts
     @el = $ Preview._tpl
 
     @_render()
@@ -43,13 +40,13 @@ class Preview extends QingModule
 
   load: (imageItem) ->
     @frame.addClass 'animate'
-    .css $.extend({
-      left: 0
-      top: 0
-    }, utils.fitSize({
-      width: @stage.width()
-      height: @stage.height()
-    }, imageItem.origin.size))
+      .css
+        left: 0
+        top: 0
+      .css utils.fitSize({
+        width: @stage.width()
+        height: @stage.height()
+      }, imageItem.origin.size)
 
     @img.attr('src', imageItem.thumb.src)
     @stage.addClass 'modal'

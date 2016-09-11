@@ -1,12 +1,7 @@
 class ImageItem extends QingModule
-  @opts:
-    el: null
 
   constructor: (opts) ->
-    super
-
-    @opts = $.extend {}, ImageItem.opts, opts
-    @el = $ @opts.el
+    @el = $ opts.el
 
     @thumb =
       src: @el.attr('src')
@@ -18,13 +13,12 @@ class ImageItem extends QingModule
       src: @el.data('origin-src')
       size: @_getOriginSize()
       download: @el.data('download-src')
-      name: @el.data('image-name') or @el.data('origin-name') or
-      @el.attr('alt') or ''
+      name: @el.data('origin-name') or @el.attr('alt') or ''
 
     @el.data 'imageItem', @
 
   _getOriginSize: ->
-    size = @el.data('image-size') or @el.data('origin-size')
+    size = @el.data('origin-size')
     size = if size then size.split(',') else [0, 0]
 
     {
