@@ -15,16 +15,14 @@ QingGallery is a ui component inherited from QingModule.
 <script type="text/javascript" src="node_modules/qing-module/dist/qing-module.js"></script>
 <script type="text/javascript" src="node_modules/qing-gallery/dist/qing-gallery.js"></script>
 
-<div class="qing-gallery"></div>
+<image src="test-thumb.png" data-origin-src="test.png" data-origin-name="test" data-origin-size="300,100" data-download-src="test-download.png" alt="test">
 ```
 
 ```js
-var qingGallery = new QingGallery({
-  el: '.qing-gallery'
-});
-
-qingGallery.on('ready', function(e) {
-  // do something
+$('image').on('click', function(e) {
+  var qingGallery = new QingGallery({
+    el: $(e.target)
+  });
 });
 ```
 
@@ -39,12 +37,6 @@ Selector/Element/jQuery Object, required, specify the html element.
 __destroy__ ()
 
 Destroy component, restore element to original state.
-
-## Events
-
-__ready__ (event)
-
-Triggered after initialization.
 
 ## Installation
 
