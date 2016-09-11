@@ -19,7 +19,7 @@ class ImageItem extends QingModule
       size: @_getOriginSize()
       download: @el.data('download-src')
       name: @el.data('image-name') or @el.data('origin-name') or
-      @el.attr('alt') or '图片'
+      @el.attr('alt') or ''
 
     @el.data 'imageItem', @
 

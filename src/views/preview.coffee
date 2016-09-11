@@ -2,9 +2,6 @@ utils = require '../utils.coffee'
 
 class Preview extends QingModule
 
-  @opts:
-    imageItem: null
-
   @_tpl = """
     <div class="qing-gallery-preview">
       <div class="qing-gallery-stage loading">
@@ -19,16 +16,6 @@ class Preview extends QingModule
       </div>
     </div>
   """
-
-  # <a class="control-rotate" href="javascript:;" title="">
-  #   <i class="icon-rotate"><span></span></i>
-  # </a>
-  # <a class="control-download" href="" title="" target="_blank">
-  #   <i class="icon-download"><span></span></i>
-  # </a>
-  # <a class="control-source" href="" title="" target="_blank">
-  #   <i class="icon-external-link"><span></span></i>
-  # </a>
 
   constructor: (opts) ->
     super
@@ -74,8 +61,6 @@ class Preview extends QingModule
 
       @img.attr('src', originImage.src)
       @frame.removeClass 'loading'
-      # @_preloadOthers()
-      # @_initRoutate()
 
     @imageItem = imageItem
 

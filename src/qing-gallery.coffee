@@ -12,6 +12,10 @@ class QingGallery extends QingModule
     wrapCls: ''
     itemCls: ''
     plugins: ['rotate', 'download', 'source']
+    locales:
+      rotate: 'Rotate'
+      download: 'Download'
+      source: 'Source'
 
   constructor: (opts) ->
     @opts = $.extend {}, QingGallery.opts, opts

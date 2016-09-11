@@ -10,13 +10,13 @@ class Control extends QingModule
     @qingGallery = qingGallery
     @el = $ Control._tpl
       .addClass "control-#{ @name }"
-      .find('.name').text('Rotate') # qingGallery.opts.locales.plugins[@name].name
+      .find('.name').text qingGallery.opts.locales[@name]
       .end().attr 'title', 'Rotate'
       .appendTo qingGallery.preview.controls.find('.controls')
 
     @_bind()
 
   _bind: ->
-    'nothing to do'
+    'need to implement'
 
 module.exports = Control

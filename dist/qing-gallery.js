@@ -43,7 +43,7 @@ ImageItem = (function(superClass) {
       src: this.el.data('origin-src'),
       size: this._getOriginSize(),
       download: this.el.data('download-src'),
-      name: this.el.data('image-name') || this.el.data('origin-name') || this.el.attr('alt') || '图片'
+      name: this.el.data('image-name') || this.el.data('origin-name') || this.el.attr('alt') || ''
     };
     this.el.data('imageItem', this);
   }
@@ -76,12 +76,12 @@ Control = (function(superClass) {
 
   function Control(qingGallery) {
     this.qingGallery = qingGallery;
-    this.el = $(Control._tpl).addClass("control-" + this.name).find('.name').text('Rotate').end().attr('title', 'Rotate').appendTo(qingGallery.preview.controls.find('.controls'));
+    this.el = $(Control._tpl).addClass("control-" + this.name).find('.name').text(qingGallery.opts.locales[this.name]).end().attr('title', 'Rotate').appendTo(qingGallery.preview.controls.find('.controls'));
     this._bind();
   }
 
   Control.prototype._bind = function() {
-    return 'nothing to do';
+    return 'need to implement';
   };
 
   return Control;
@@ -341,11 +341,9 @@ List = (function(superClass) {
         return $imageItem;
       };
     })(this)));
-    return utils.preloadImages(this.opts.imageItems.map((function(_this) {
-      return function(imageItem) {
-        return imageItem.origin.src;
-      };
-    })(this)));
+    return utils.preloadImages(this.opts.imageItems.map(function(imageItem) {
+      return imageItem.origin.src;
+    }));
   };
 
   List.prototype.prev = function() {
@@ -396,10 +394,6 @@ utils = require('../utils.coffee');
 
 Preview = (function(superClass) {
   extend(Preview, superClass);
-
-  Preview.opts = {
-    imageItem: null
-  };
 
   Preview._tpl = "<div class=\"qing-gallery-preview\">\n  <div class=\"qing-gallery-stage loading\">\n    <div class=\"frame\">\n      <img src=\"\" />\n      <div class=\"loading-indicator\"></div>\n    </div>\n  </div>\n  <div class=\"qing-gallery-controls\">\n    <span class=\"filename\"></span>\n    <div class=\"controls\"></div>\n  </div>\n</div>";
 
@@ -506,7 +500,12 @@ QingGallery = (function(superClass) {
     el: null,
     wrapCls: '',
     itemCls: '',
-    plugins: ['rotate', 'download', 'source']
+    plugins: ['rotate', 'download', 'source'],
+    locales: {
+      rotate: 'Rotate',
+      download: 'Download',
+      source: 'Source'
+    }
   };
 
   function QingGallery(opts) {

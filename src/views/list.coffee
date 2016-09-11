@@ -47,7 +47,7 @@ class List extends QingModule
       $imageItem
     )
 
-    utils.preloadImages @opts.imageItems.map((imageItem) =>
+    utils.preloadImages @opts.imageItems.map((imageItem) ->
       imageItem.origin.src
     )
 
