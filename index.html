@@ -6,20 +6,153 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link media="all" rel="stylesheet" type="text/css" href="dist/qing-gallery.css">
+	<style>
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+	</style>
 
 	<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
 	<script type="text/javascript" src="node_modules/qing-module/dist/qing-module.js"></script>
 	<script type="text/javascript" src="dist/qing-gallery.js"></script>
 	<script type="text/javascript">
 		$(function() {
-      var qingGallery = new QingGallery({
-        el: '.test-el'
-      });
+			$('.wrapper').on('click', 'img', function(e) {
+				var qingGallery = new QingGallery({
+	        el: e.target,
+					wrapCls: '.wrapper',
+					itemCls: 'img'
+	      });
+			});
+
+			$('.test-el').on('click', function(e) {
+				var qingGallery = new QingGallery({
+					el: e.target
+				});
+			});
 		});
 	</script>
 
 </head>
 <body>
-  <div class="test-el"></div>
+	<h4>single</h4>
+	<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png"
+		data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png"
+		data-download-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" 
+		alt="tower" width="100" class="test-el">
+
+	<h4>multi</h4>
+  <ul class="wrapper">
+  	<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/logos/logo-0dc263aa32b489b62161f437b17bb8e8.png" data-origin-src="https://hk.tower.im/assets/home/logos/logo@2x-a96718a1aabf2cd777c8774c500826eb.png" alt="tower" width="100">
+  	</li>
+		<li>
+			<img src="https://hk.tower.im/assets/home/shot-project-0f2aac956995ef51c0c9fcf70306206a.png" data-origin-src="https://hk.tower.im/assets/home/shot-project@2x-f27eb365a80eba0733a33a9e6e78a816.png" alt="tower" width="100">
+  	</li>
+  </ul>
 </body>
 </html>

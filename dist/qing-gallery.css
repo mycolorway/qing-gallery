@@ -1,0 +1,115 @@
+/**
+ * qing-gallery v0.0.1
+ * http://mycolorway.github.io/qing-gallery
+ *
+ * Copyright Mycolorway Design
+ * Released under the MIT license
+ * http://mycolorway.github.io/qing-gallery/license.html
+ *
+ * Date: 2016-09-11
+ */
+html.qing-gallery-active {
+  overflow: hidden !important; }
+
+.qing-gallery {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  font-size: 16px;
+  user-select: none; }
+  .qing-gallery .qing-gallery-preview {
+    display: flex;
+    flex: 1;
+    flex-direction: column; }
+  .qing-gallery .qing-gallery-stage {
+    box-shadow: inset -4px -4px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    flex: 1;
+    overflow: hidden; }
+  .qing-gallery .modal {
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: background-color 200ms ease-out; }
+  .qing-gallery .frame {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto; }
+    .qing-gallery .frame.animate {
+      transition: width 200ms ease-out, height 200ms ease-out, top 200ms ease-out, left 200ms ease-out, transform 200ms ease-out; }
+    .qing-gallery .frame img {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      box-shadow: 0 0 28px rgba(0, 0, 0, 0.2); }
+  .qing-gallery .qing-gallery-controls {
+    height: 50px;
+    line-height: 50px;
+    flex: 0 0 50px;
+    color: #fff;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8); }
+    .qing-gallery .qing-gallery-controls .filename {
+      float: left;
+      margin-left: 20px;
+      display: block;
+      max-width: 50%;
+      height: 50px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      user-select: text; }
+    .qing-gallery .qing-gallery-controls .controls {
+      float: right;
+      height: 50px; }
+    .qing-gallery .qing-gallery-controls .control {
+      display: inline-block;
+      text-decoration: none;
+      min-width: 60px;
+      text-align: center;
+      color: #999; }
+      .qing-gallery .qing-gallery-controls .control:hover {
+        color: #fff;
+        background-color: #222; }
+  .qing-gallery .qing-gallery-list {
+    flex: 0 0 110px;
+    width: 110px;
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: rgba(0, 0, 0, 0.8); }
+    .qing-gallery .qing-gallery-list .thumb {
+      display: block;
+      position: relative;
+      width: 80px;
+      margin: 10px auto;
+      overflow: hidden;
+      opacity: 0.6;
+      border: 1px solid #ddd; }
+      .qing-gallery .qing-gallery-list .thumb img {
+        display: block;
+        margin: auto;
+        max-width: 80px;
+        max-height: 60px; }
+      .qing-gallery .qing-gallery-list .thumb:hover {
+        opacity: 1; }
+      .qing-gallery .qing-gallery-list .thumb.selected {
+        opacity: 1;
+        border-color: #fff;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.4); }
+
+@media (max-width: 480px) {
+  .qing-gallery .qing-gallery-controls .name {
+    display: none; } }
+
+@media (max-width: 768px) {
+  .qing-gallery .qing-gallery-controls {
+    text-align: left;
+    padding-left: 10px; }
+    .qing-gallery .qing-gallery-controls .name {
+      max-width: 30%; } }
