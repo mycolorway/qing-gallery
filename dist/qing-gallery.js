@@ -66,7 +66,7 @@ var Control,
 Control = (function(superClass) {
   extend(Control, superClass);
 
-  Control._tpl = '<a class="control" href="javascript:;">\n  <i class="icon"></i>\n  <span class="name"></span>\n</a>';
+  Control._tpl = '<a class="control" href="javascript:;">\n  <span class="name"></span>\n</a>';
 
   function Control(qingGallery) {
     this.qingGallery = qingGallery;

@@ -78,9 +78,9 @@ html.qing-gallery-active {
   .qing-gallery .control {
     display: inline-block;
     text-decoration: none;
-    min-width: 60px;
     text-align: center;
-    color: #999; }
+    color: #999;
+    padding: 0 10px; }
     .qing-gallery .control:hover {
       color: #fff;
       background-color: #222; }

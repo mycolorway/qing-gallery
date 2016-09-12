@@ -1,7 +1,6 @@
 class Control extends QingModule
   @_tpl: '''
     <a class="control" href="javascript:;">
-      <i class="icon"></i>
       <span class="name"></span>
     </a>
   '''
