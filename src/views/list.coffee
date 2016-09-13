@@ -24,17 +24,20 @@ class List extends QingModule
 
   _bind: ->
     @el.on 'click.qing-gallery', '.thumb', (e) =>
-      $imageItem = $ e.currentTarget
-      imageItem = $imageItem.data 'imageItem'
+      @select $(e.currentTarget)
 
-      $imageItem.addClass 'selected'
-        .siblings '.selected'
-        .removeClass 'selected'
+  select: ($imageItem = $(@el.find('.selected'))) ->
+    imageItem = $imageItem.data 'imageItem'
 
-      @_scrollToSelected()
+    $imageItem.addClass 'selected'
+      .siblings '.selected'
+      .removeClass 'selected'
 
-      @trigger 'imageItemChange', [imageItem]
-      false
+    @_scrollToSelected()
+
+    @el.css 'opacity', 1
+    @trigger 'imageItemChange', [imageItem]
+    false
 
   _render: ->
     @el = $ List._tpl
@@ -75,6 +78,6 @@ class List extends QingModule
     )
 
   destroy: ->
-    @el.fadeOut '50'
+    @el.css 'opacity', 0
 
 module.exports = List

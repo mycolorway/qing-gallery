@@ -312,15 +312,22 @@ List = (function(superClass) {
   List.prototype._bind = function() {
     return this.el.on('click.qing-gallery', '.thumb', (function(_this) {
       return function(e) {
-        var $imageItem, imageItem;
-        $imageItem = $(e.currentTarget);
-        imageItem = $imageItem.data('imageItem');
-        $imageItem.addClass('selected').siblings('.selected').removeClass('selected');
-        _this._scrollToSelected();
-        _this.trigger('imageItemChange', [imageItem]);
-        return false;
+        return _this.select($(e.currentTarget));
       };
     })(this));
+  };
+
+  List.prototype.select = function($imageItem) {
+    var imageItem;
+    if ($imageItem == null) {
+      $imageItem = $(this.el.find('.selected'));
+    }
+    imageItem = $imageItem.data('imageItem');
+    $imageItem.addClass('selected').siblings('.selected').removeClass('selected');
+    this._scrollToSelected();
+    this.el.css('opacity', 1);
+    this.trigger('imageItemChange', [imageItem]);
+    return false;
   };
 
   List.prototype._render = function() {
@@ -370,7 +377,7 @@ List = (function(superClass) {
   };
 
   List.prototype.destroy = function() {
-    return this.el.fadeOut('50');
+    return this.el.css('opacity', 0);
   };
 
   return List;
@@ -428,7 +435,7 @@ Preview = (function(superClass) {
       height: this.stage.height()
     }, imageItem.origin.size));
     this.img.attr('src', imageItem.thumb.src);
-    this.stage.addClass('modal');
+    this.controls.css('opacity', 1);
     this.el.find('.filename').text(imageItem.origin.name);
     this.frame.addClass('loading');
     utils.preloadImages(imageItem.origin.src, (function(_this) {
@@ -454,8 +461,7 @@ Preview = (function(superClass) {
   };
 
   Preview.prototype.destroy = function(callback) {
-    this.controls.fadeOut('50');
-    this.stage.removeClass('modal');
+    this.controls.css('opacity', 0);
     this.frame.css(this.imageItem.thumb.size).css(this._frameInitialPos(this.imageItem));
     return this.frame.one(utils.transitionEnd(), function(e) {
       return callback();
@@ -511,7 +517,7 @@ QingGallery = (function(superClass) {
     this._bind();
     QingGallery.__super__.constructor.call(this, this.opts);
     this.preview.init(this.el.data('imageItem'));
-    this.list.el.find('.selected').click();
+    this.list.select();
   }
 
   QingGallery.prototype._render = function() {
@@ -525,7 +531,7 @@ QingGallery = (function(superClass) {
       imageItems: this.imageItems,
       selected: this.el.data('imageItem')
     });
-    this.wrapper = $('<div class="qing-gallery"></div>').data('qingGallery', this).append([this.preview.el, this.list.el]).appendTo('body');
+    this.wrapper = $('<div class="qing-gallery init-animation"></div>').data('qingGallery', this).append([this.preview.el, this.list.el]).appendTo('body');
     $('html').addClass('qing-gallery-active');
     return this.el.data('qingGallery', this);
   };
@@ -536,7 +542,8 @@ QingGallery = (function(superClass) {
         _this.plugins.rotate.reset();
         _this.plugins.download.load(imageItem);
         _this.plugins.source.load(imageItem);
-        return _this.preview.load(imageItem);
+        _this.preview.load(imageItem);
+        return _this.wrapper.addClass('modal');
       };
     })(this));
     this.preview.on('modalClick', (function(_this) {
@@ -565,6 +572,7 @@ QingGallery = (function(superClass) {
     this.list.off('imageItemChange');
     this.preview.off('modalClick');
     $(document).off('.qing-gallery');
+    this.wrapper.removeClass('init-animation modal').addClass('destroy-animation');
     this.list.destroy();
     return this.preview.destroy((function(_this) {
       return function() {

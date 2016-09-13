@@ -22,8 +22,8 @@
 			$('.wrapper').on('click', 'img', function(e) {
 				var qingGallery = new QingGallery({
 	        el: e.target,
-					wrapCls: '.wrapper',
-					itemCls: 'img'
+					scopeSelector: '.wrapper',
+					matchSelector: 'img'
 	      });
 			});
 

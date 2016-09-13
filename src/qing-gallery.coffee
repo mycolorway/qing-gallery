@@ -29,7 +29,7 @@ class QingGallery extends QingModule
 
     super @opts
     @preview.init @el.data('imageItem')
-    @list.el.find('.selected').click()
+    @list.select()
 
   _render: ->
     @imageItems = @el.closest(@opts.scopeSelector).find(@opts.matchSelector)
@@ -43,7 +43,7 @@ class QingGallery extends QingModule
       imageItems: @imageItems
       selected: @el.data('imageItem')
 
-    @wrapper = $('<div class="qing-gallery"></div>')
+    @wrapper = $('<div class="qing-gallery init-animation"></div>')
       .data('qingGallery', @)
       .append [
         @preview.el
@@ -60,6 +60,7 @@ class QingGallery extends QingModule
       @plugins.download.load imageItem
       @plugins.source.load imageItem
       @preview.load imageItem
+      @wrapper.addClass 'modal'
 
     @preview.on 'modalClick', =>
       @destroy()
@@ -81,6 +82,8 @@ class QingGallery extends QingModule
     @preview.off 'modalClick'
     $(document).off('.qing-gallery')
 
+    @wrapper.removeClass 'init-animation modal'
+      .addClass 'destroy-animation'
     @list.destroy()
     @preview.destroy =>
       @wrapper.remove()

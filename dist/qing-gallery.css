@@ -20,13 +20,26 @@ html.qing-gallery-active {
   z-index: 999;
   display: flex;
   font-size: 16px;
-  user-select: none; }
+  user-select: none;
+  transition: background-color 200ms ease-out;
+  background-color: transparent; }
+  .qing-gallery.modal {
+    background-color: rgba(0, 0, 0, 0.6); }
+  .qing-gallery.init-animation .qing-gallery-list,
+  .qing-gallery.init-animation .qing-gallery-controls {
+    transition-delay: 480ms; }
+  .qing-gallery.init-animation.modal {
+    transition-delay: 200ms; }
+  .qing-gallery.destroy-animation.modal,
+  .qing-gallery.destroy-animation .qing-gallery-list,
+  .qing-gallery.destroy-animation .qing-gallery-controls {
+    transition-delay: 0;
+    transition-duration: 50ms; }
   .qing-gallery .qing-gallery-preview {
     display: flex;
     flex: 1;
     flex-direction: column; }
   .qing-gallery .qing-gallery-stage {
-    box-shadow: inset -4px -4px 20px rgba(0, 0, 0, 0.2);
     position: relative;
     padding: 30px;
     flex: 1;
@@ -37,17 +50,18 @@ html.qing-gallery-active {
     height: auto;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: rgba(0, 0, 0, 0.8); }
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transition: opacity 200ms ease-out; }
   .qing-gallery .qing-gallery-controls {
     height: 50px;
     line-height: 50px;
     flex: 0 0 50px;
     color: #fff;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.8); }
-  .qing-gallery .modal {
-    background-color: rgba(0, 0, 0, 0.6);
-    transition: background-color 200ms ease-out; }
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transition: opacity 200ms ease-out; }
   .qing-gallery .frame {
     position: absolute;
     top: 0;
@@ -60,7 +74,7 @@ html.qing-gallery-active {
     .qing-gallery .frame img {
       width: 100%;
       height: 100%;
-      background: #fff;
+      background-color: #fff;
       box-shadow: 0 0 28px rgba(0, 0, 0, 0.2); }
   .qing-gallery .filename {
     float: left;

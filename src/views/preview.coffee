@@ -49,7 +49,7 @@ class Preview extends QingModule
       }, imageItem.origin.size)
 
     @img.attr('src', imageItem.thumb.src)
-    @stage.addClass 'modal'
+    @controls.css 'opacity', 1
     @el.find('.filename').text imageItem.origin.name
     @frame.addClass 'loading'
 
@@ -75,8 +75,7 @@ class Preview extends QingModule
     ) * 2
 
   destroy: (callback) ->
-    @controls.fadeOut '50'
-    @stage.removeClass 'modal'
+    @controls.css 'opacity', 0
     @frame.css @imageItem.thumb.size
       .css @_frameInitialPos(@imageItem)
     @frame.one utils.transitionEnd(), (e) ->
