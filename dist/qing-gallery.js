@@ -6,7 +6,7 @@
  * Released under the MIT license
  * http://mycolorway.github.io/qing-gallery/license.html
  *
- * Date: 2016-09-12
+ * Date: 2016-09-13
  */
 ;(function(root, factory) {
   if (typeof module === 'object' && module.exports) {
@@ -448,8 +448,8 @@ Preview = (function(superClass) {
     $doc = $(document);
     offset = imageItem.el.offset();
     return {
-      top: (offset.top - $doc.scrollTop() - (this.stage.height() - imageItem.el.height()) / 2) * 2,
-      left: (offset.left - $doc.scrollLeft() - (this.stage.width() - imageItem.el.width()) / 2) * 2
+      top: (offset.top - $doc.scrollTop() - (this.stage.outerHeight() - imageItem.el.height()) / 2) * 2,
+      left: (offset.left - $doc.scrollLeft() - (this.stage.outerWidth() - imageItem.el.width()) / 2) * 2
     };
   };
 
@@ -490,8 +490,8 @@ QingGallery = (function(superClass) {
 
   QingGallery.opts = {
     el: null,
-    wrapCls: '',
-    itemCls: '',
+    scopeSelector: '',
+    matchSelector: '',
     plugins: ['rotate', 'download', 'source'],
     locales: {
       rotate: 'Rotate',
@@ -515,7 +515,7 @@ QingGallery = (function(superClass) {
   }
 
   QingGallery.prototype._render = function() {
-    this.imageItems = this.el.closest(this.opts.wrapCls).find(this.opts.itemCls).add(this.el).map(function() {
+    this.imageItems = this.el.closest(this.opts.scopeSelector).find(this.opts.matchSelector).add(this.el).map(function() {
       return new ImageItem({
         el: this
       });

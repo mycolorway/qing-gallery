@@ -9,8 +9,8 @@ class QingGallery extends QingModule
 
   @opts:
     el: null
-    wrapCls: ''
-    itemCls: ''
+    scopeSelector: ''
+    matchSelector: ''
     plugins: ['rotate', 'download', 'source']
     locales:
       rotate: 'Rotate'
@@ -32,7 +32,8 @@ class QingGallery extends QingModule
     @list.el.find('.selected').click()
 
   _render: ->
-    @imageItems = @el.closest(@opts.wrapCls).find(@opts.itemCls).add(@el).map ->
+    @imageItems = @el.closest(@opts.scopeSelector).find(@opts.matchSelector)
+    .add(@el).map ->
       new ImageItem
         el: @
     .get()

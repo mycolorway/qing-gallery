@@ -67,11 +67,11 @@ class Preview extends QingModule
 
     top: (
       offset.top - $doc.scrollTop() -
-      (@stage.height() - imageItem.el.height()) / 2
+      (@stage.outerHeight() - imageItem.el.height()) / 2
     ) * 2
     left: (
       offset.left - $doc.scrollLeft() -
-      (@stage.width() - imageItem.el.width()) / 2
+      (@stage.outerWidth() - imageItem.el.width()) / 2
     ) * 2
 
   destroy: (callback) ->

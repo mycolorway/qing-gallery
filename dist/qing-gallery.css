@@ -6,7 +6,7 @@
  * Released under the MIT license
  * http://mycolorway.github.io/qing-gallery/license.html
  *
- * Date: 2016-09-12
+ * Date: 2016-09-13
  */
 html.qing-gallery-active {
   overflow: hidden !important; }
@@ -28,8 +28,8 @@ html.qing-gallery-active {
   .qing-gallery .qing-gallery-stage {
     box-shadow: inset -4px -4px 20px rgba(0, 0, 0, 0.2);
     position: relative;
-    flex: 1;
     padding: 30px;
+    flex: 1;
     overflow: hidden; }
   .qing-gallery .qing-gallery-list {
     flex: 0 0 110px;
