@@ -6,7 +6,7 @@
  * Released under the MIT license
  * http://mycolorway.github.io/qing-gallery/license.html
  *
- * Date: 2016-09-13
+ * Date: 2016-09-14
  */
 ;(function(root, factory) {
   if (typeof module === 'object' && module.exports) {
