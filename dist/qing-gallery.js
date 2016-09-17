@@ -6,7 +6,7 @@
  * Released under the MIT license
  * http://mycolorway.github.io/qing-gallery/license.html
  *
- * Date: 2016-09-14
+ * Date: 2016-09-17
  */
 ;(function(root, factory) {
   if (typeof module === 'object' && module.exports) {
@@ -496,6 +496,7 @@ QingGallery = (function(superClass) {
 
   QingGallery.opts = {
     el: null,
+    appendTo: 'body',
     scopeSelector: '',
     matchSelector: '',
     plugins: ['rotate', 'download', 'source'],
@@ -531,7 +532,7 @@ QingGallery = (function(superClass) {
       imageItems: this.imageItems,
       selected: this.el.data('imageItem')
     });
-    this.wrapper = $('<div class="qing-gallery init-animation"></div>').data('qingGallery', this).append([this.preview.el, this.list.el]).appendTo('body');
+    this.wrapper = $('<div class="qing-gallery init-animation"></div>').data('qingGallery', this).append([this.preview.el, this.list.el]).appendTo(this.opts.appendTo);
     $('html').addClass('qing-gallery-active');
     return this.el.data('qingGallery', this);
   };

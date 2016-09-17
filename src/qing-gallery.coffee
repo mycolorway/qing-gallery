@@ -9,6 +9,7 @@ class QingGallery extends QingModule
 
   @opts:
     el: null
+    appendTo: 'body'
     scopeSelector: ''
     matchSelector: ''
     plugins: ['rotate', 'download', 'source']
@@ -49,7 +50,7 @@ class QingGallery extends QingModule
         @preview.el
         @list.el
       ]
-      .appendTo 'body'
+      .appendTo @opts.appendTo
 
     $('html').addClass 'qing-gallery-active'
     @el.data 'qingGallery', @
