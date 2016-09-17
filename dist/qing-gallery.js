@@ -70,7 +70,7 @@ Control = (function(superClass) {
 
   function Control(qingGallery) {
     this.qingGallery = qingGallery;
-    this.el = $(Control._tpl).addClass("control-" + this.name).find('.name').text(qingGallery.opts.locales[this.name]).end().attr('title', 'Rotate').appendTo(qingGallery.preview.controls.find('.controls'));
+    this.el = $(Control._tpl).addClass("control-" + this.name).find('.name').text(qingGallery.opts.locales[this.name]).end().appendTo(qingGallery.preview.controls.find('.controls'));
     this._bind();
   }
 
