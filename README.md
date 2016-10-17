@@ -38,6 +38,12 @@ __destroy__ ()
 
 Destroy component, restore element to original state.
 
+## Events
+
+__destroy__
+
+trigger on destroy
+
 ## Installation
 
 Install via npm:

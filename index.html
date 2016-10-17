@@ -31,6 +31,14 @@
 				var qingGallery = new QingGallery({
 					el: e.target
 				});
+
+				qingGallery.on('before-destroy', function(e) {
+					console.log('before destroy');
+				});
+
+				qingGallery.on('destroy', function(e) {
+					console.log('desotry');
+				});
 			});
 		});
 	</script>

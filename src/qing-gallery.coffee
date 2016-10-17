@@ -86,10 +86,14 @@ class QingGallery extends QingModule
     @wrapper.removeClass 'init-animation modal'
       .addClass 'destroy-animation'
     @list.destroy()
-    @preview.destroy =>
+
+    @preview.one 'destroy', =>
       @wrapper.remove()
       @el.removeData 'qingGallery'
       $('html').removeClass 'qing-gallery-active'
+      @trigger 'destroy'
+
+    @preview.destroy()
 
   @destroyAll: ->
     $('.qing-gallery').each ->

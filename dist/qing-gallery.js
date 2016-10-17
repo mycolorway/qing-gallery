@@ -6,7 +6,7 @@
  * Released under the MIT license
  * http://mycolorway.github.io/qing-gallery/license.html
  *
- * Date: 2016-09-17
+ * Date: 2016-10-17
  */
 ;(function(root, factory) {
   if (typeof module === 'object' && module.exports) {
@@ -460,12 +460,14 @@ Preview = (function(superClass) {
     };
   };
 
-  Preview.prototype.destroy = function(callback) {
+  Preview.prototype.destroy = function() {
     this.controls.css('opacity', 0);
     this.frame.css(this.imageItem.thumb.size).css(this._frameInitialPos(this.imageItem));
-    return this.frame.one(utils.transitionEnd(), function(e) {
-      return callback();
-    });
+    return this.frame.one(utils.transitionEnd(), (function(_this) {
+      return function(e) {
+        return _this.trigger('destroy');
+      };
+    })(this));
   };
 
   return Preview;
@@ -575,13 +577,15 @@ QingGallery = (function(superClass) {
     $(document).off('.qing-gallery');
     this.wrapper.removeClass('init-animation modal').addClass('destroy-animation');
     this.list.destroy();
-    return this.preview.destroy((function(_this) {
+    this.preview.one('destroy', (function(_this) {
       return function() {
         _this.wrapper.remove();
         _this.el.removeData('qingGallery');
-        return $('html').removeClass('qing-gallery-active');
+        $('html').removeClass('qing-gallery-active');
+        return _this.trigger('destroy');
       };
     })(this));
+    return this.preview.destroy();
   };
 
   QingGallery.destroyAll = function() {

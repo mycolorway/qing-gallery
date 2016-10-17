@@ -74,11 +74,11 @@ class Preview extends QingModule
       (@stage.outerWidth() - imageItem.el.width()) / 2
     ) * 2
 
-  destroy: (callback) ->
+  destroy: ->
     @controls.css 'opacity', 0
     @frame.css @imageItem.thumb.size
       .css @_frameInitialPos(@imageItem)
-    @frame.one utils.transitionEnd(), (e) ->
-      callback()
+    @frame.one utils.transitionEnd(), (e) =>
+      @trigger 'destroy'
 
 module.exports = Preview
