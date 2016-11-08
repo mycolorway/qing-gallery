@@ -6,7 +6,7 @@
  * Released under the MIT license
  * http://mycolorway.github.io/qing-gallery/license.html
  *
- * Date: 2016-10-17
+ * Date: 2016-11-8
  */
 ;(function(root, factory) {
   if (typeof module === 'object' && module.exports) {
@@ -290,6 +290,10 @@ utils = require('../utils.coffee');
 List = (function(superClass) {
   extend(List, superClass);
 
+  function List() {
+    return List.__super__.constructor.apply(this, arguments);
+  }
+
   List.opts = {
     imageItems: null,
     selected: null
@@ -299,15 +303,18 @@ List = (function(superClass) {
 
   List._imageItem = '<a class="thumb" href="javascript:;"><img src="" /></a>';
 
-  function List(opts) {
-    List.__super__.constructor.apply(this, arguments);
-    this.opts = $.extend({}, List.opts, opts);
+  List.prototype._setOptions = function(opts) {
+    List.__super__._setOptions.apply(this, arguments);
+    return $.extend(this.opts, List.opts, opts);
+  };
+
+  List.prototype._init = function() {
     this._render();
     this._bind();
     if (this.opts.imageItems.length <= 1) {
-      this.el.hide();
+      return this.el.hide();
     }
-  }
+  };
 
   List.prototype._bind = function() {
     return this.el.on('click.qing-gallery', '.thumb', (function(_this) {
@@ -396,13 +403,17 @@ utils = require('../utils.coffee');
 Preview = (function(superClass) {
   extend(Preview, superClass);
 
+  function Preview() {
+    return Preview.__super__.constructor.apply(this, arguments);
+  }
+
   Preview._tpl = "<div class=\"qing-gallery-preview\">\n  <div class=\"qing-gallery-stage loading\">\n    <div class=\"frame\">\n      <img src=\"\" />\n      <div class=\"loading-indicator\"></div>\n    </div>\n  </div>\n  <div class=\"qing-gallery-controls\">\n    <span class=\"filename\"></span>\n    <div class=\"controls\"></div>\n  </div>\n</div>";
 
-  function Preview(opts) {
+  Preview.prototype._init = function() {
     this.el = $(Preview._tpl);
     this._render();
-    this._bind();
-  }
+    return this._bind();
+  };
 
   Preview.prototype._render = function() {
     this.controls = this.el.find('.qing-gallery-controls');
@@ -509,16 +520,23 @@ QingGallery = (function(superClass) {
     }
   };
 
-  function QingGallery(opts) {
-    this.opts = $.extend({}, QingGallery.opts, opts);
+  QingGallery.prototype._setOptions = function(opts) {
+    QingGallery.__super__._setOptions.apply(this, arguments);
+    return $.extend(this.opts, QingGallery.opts, opts);
+  };
+
+  QingGallery.prototype._init = function() {
     this.el = $(this.opts.el);
     if (!(this.el.length > 0)) {
       throw new Error('QingGallery: option el is required');
     }
     QingGallery.destroyAll();
     this._render();
-    this._bind();
-    QingGallery.__super__.constructor.call(this, this.opts);
+    return this._bind();
+  };
+
+  function QingGallery() {
+    QingGallery.__super__.constructor.apply(this, arguments);
     this.preview.init(this.el.data('imageItem'));
     this.list.select();
   }

@@ -18,8 +18,11 @@ class QingGallery extends QingModule
       download: 'Download'
       source: 'Source'
 
-  constructor: (opts) ->
-    @opts = $.extend {}, QingGallery.opts, opts
+  _setOptions: (opts) ->
+    super
+    $.extend @opts, QingGallery.opts, opts
+
+  _init: ->
     @el = $ @opts.el
     unless @el.length > 0
       throw new Error 'QingGallery: option el is required'
@@ -28,7 +31,8 @@ class QingGallery extends QingModule
     @_render()
     @_bind()
 
-    super @opts
+  constructor: ->
+    super
     @preview.init @el.data('imageItem')
     @list.select()
 

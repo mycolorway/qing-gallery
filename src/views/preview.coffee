@@ -17,9 +17,8 @@ class Preview extends QingModule
     </div>
   """
 
-  constructor: (opts) ->
+  _init: ->
     @el = $ Preview._tpl
-
     @_render()
     @_bind()
 

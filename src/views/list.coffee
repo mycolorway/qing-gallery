@@ -14,10 +14,11 @@ class List extends QingModule
     <a class="thumb" href="javascript:;"><img src="" /></a>
   '''
 
-  constructor: (opts) ->
+  _setOptions: (opts) ->
     super
+    $.extend @opts, List.opts, opts
 
-    @opts = $.extend {}, List.opts, opts
+  _init: ->
     @_render()
     @_bind()
     @el.hide() if @opts.imageItems.length <= 1
